@@ -1,17 +1,22 @@
 import express from 'express';
 import { uploader } from './util.js';
+import path from "path";
+import { fileURLToPath } from "url";
 
 const data = [{ id: 1, username: "Andres", email: "Andres@example.com", rol: "admin" },
 { id: 2, username: "Alvaro", email: "Alvaro@example.com", rol: "usuario" },
 { id: 3, username: "Juan", email: "Juan@example.com", rol: "usuario" }]
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express()
 const port = 3000
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/", express.static("public"))
+app.use("/", express.static(path.join(__dirname, '../public')));
+// app.use("/", express.static("public"))
 
 app.get('/', (req, res) => {
     res.send('¡HOLA MUNDO!')
