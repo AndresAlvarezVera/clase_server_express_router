@@ -3,14 +3,12 @@ import { uploader } from '../util.js';
 
 const router = Router();
 
-const data = [
-  { id: 1, name: 'Product 1', price: 10.99 },
-  { id: 2, name: 'Product 2', price: 19.99 },
-  { id: 3, name: 'Product 3', price: 5.99 },
-];
+const data = [{ id: 1, username: "Andres", email: "Andres@example.com", rol: "admin" },
+{ id: 2, username: "Alvaro", email: "Alvaro@example.com", rol: "usuario" },
+{ id: 3, username: "Juan", email: "Juan@example.com", rol: "usuario" }]
 
 router.get('/', (req, res) => {
-  res.json(data);
+    res.json(data);
 });
 
 router.get('/:id', (req, res) => {
